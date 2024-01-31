@@ -1,3 +1,4 @@
+import 'package:familydriver/screens/Sign_In.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(
@@ -13,8 +14,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
+        color: Color(0xFFE65100),
         decoration: BoxDecoration(
-          gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+          gradient: LinearGradient(begin: Alignment.center, colors: [
             Color(0xFFE65100),
             Color(0xFFFFA726),
           ]),
@@ -62,20 +64,21 @@ class HomePage extends StatelessWidget {
                         decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
                               color: Color.fromRGBO(225, 95, 27, .3),
-                              blurRadius: 20,
+                              blurRadius: 5,
                               offset: Offset(0, 25)),
                         ]),
                         child: Column(
                           children: [
                             Container(
                               padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(color: Colors.grey))),
+                              // decoration: BoxDecoration(
+                              //     border: Border(
+                              //         bottom: BorderSide(color: Colors.grey))),
                               child: TextField(
                                 decoration: InputDecoration(
                                   hintText: "Email or Phone number ",
-                                  hintStyle: TextStyle(color: Colors.grey),
+                                  hintStyle:
+                                      TextStyle(color: Color(0xFF9E9E9E)),
                                   border: InputBorder.none,
                                 ),
                               ),
@@ -122,18 +125,35 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 20),
-                      Row(
-                        children: [
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Colors.blue,
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                        child: Text(
+                          "You don't have an account ",
+                          style: TextStyle(
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Center(
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (_) {
+                                return SignIn();
+                              }));
+                            },
+                            child: Text(
+                              'Create Account',
+                              style: TextStyle(
+                                color: Colors.green,
+                              ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      )
                     ],
                   ),
                 ),
