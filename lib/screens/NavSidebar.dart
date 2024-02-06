@@ -1,4 +1,4 @@
-import 'package:familydriver/screens/loging.dart';
+import 'package:familydriver/screens/Login.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
@@ -74,7 +74,7 @@ class NavBar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Loging()),
+                MaterialPageRoute(builder: (context) => Loginpage()),
               );
             },
           ),

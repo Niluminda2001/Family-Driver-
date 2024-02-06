@@ -302,7 +302,7 @@ class UpperSection extends StatelessWidget {
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w700,
                 fontsize: 18,
-                text: 'MaxTach™',
+                text: '™',
               ),
             ),
             SizedBox(
