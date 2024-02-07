@@ -1,3 +1,4 @@
+import 'package:familydriver/Api/Login_Api_End_Point.dart';
 import 'package:familydriver/screens/widgets/Lable_Text.dart';
 import 'package:familydriver/screens/widgets/Rouned_boutton.dart';
 import 'package:familydriver/screens/widgets/TextComponent.dart';
@@ -21,7 +22,7 @@ class _LoginpageState extends State<Loginpage> {
     super.initState();
   }
 
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordContrller = TextEditingController();
   AutovalidateMode switched = AutovalidateMode.disabled;
   final _EmailformKey = GlobalKey<FormState>();
@@ -32,10 +33,10 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.secondaryColor,
+      color: AppColors.logingbox,
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: AppColors.primaryColor,
+          // backgroundColor: AppColors.primaryColor,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,12 +69,7 @@ class _LoginpageState extends State<Loginpage> {
                               fontsize: 24,
                               text: 'Let’s get started',
                             ),
-                            TextComponent(
-                              text: "",
-                              fontWeight: FontWeight.w300,
-                              fontsize: 23,
-                              color: Colors.accents,
-                            ),
+
                             const SizedBox(
                               height: 10,
                             ),
@@ -87,7 +83,7 @@ class _LoginpageState extends State<Loginpage> {
                               key: _EmailformKey,
                               autovalidateMode: switched,
                               child: TextFormField(
-                                controller: usernameController,
+                                controller: emailController,
                                 keyboardType: TextInputType.name,
                                 focusNode: emailFocusNode,
                                 style: const TextStyle(
@@ -103,7 +99,7 @@ class _LoginpageState extends State<Loginpage> {
                                   ),
                                   hintText: "Your User Name",
                                   filled: true,
-                                  fillColor: AppColors.primaryColor,
+                                  fillColor: AppColors.secondaryColor,
                                   contentPadding: EdgeInsets.all(11.0),
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.all(
@@ -163,7 +159,7 @@ class _LoginpageState extends State<Loginpage> {
                                   ),
                                   hintText: "Your Password",
                                   filled: true,
-                                  fillColor: AppColors.primaryColor,
+                                  fillColor: AppColors.secondaryColor,
                                   contentPadding: EdgeInsets.all(11.0),
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.all(
@@ -202,21 +198,18 @@ class _LoginpageState extends State<Loginpage> {
                             isLoading
                                 ? Center(child: CircularProgressIndicator())
                                 : RoundedButton(
+                                    color: Colors.red,
                                     buttonText: "Sign in",
                                     onPress: () async {
                                       setState(() {
                                         switched = AutovalidateMode.always;
                                         isLoading = true;
                                       });
-
                                       try {
-                                        // Perform your login logic here
-                                        // await AppApiServices.login(
-                                        //   usernameController.text,
-                                        //   passwordContrller.text,
-                                        //   context,
-                                        // );
-
+                                        if (emailController.text != "" &&
+                                            passwordContrller.text == "")
+                                          LoginApi.login(emailController.text,
+                                              passwordContrller.text, context);
                                         // If login is successful, you can navigate to the next screen or perform other actions
                                       } catch (e) {
                                         // Handle any errors during the login process

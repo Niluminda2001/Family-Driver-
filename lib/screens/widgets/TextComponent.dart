@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class TextComponent extends StatelessWidget {
   String text;
-  var color;
+  final Color color;
+
   FontWeight fontWeight;
   double fontsize;
 

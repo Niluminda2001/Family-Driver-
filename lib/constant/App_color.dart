@@ -11,4 +11,6 @@ class AppColors {
   static const Color logingbox = Color(0xFFD3D3D3);
 
   // Add more colors as needed
+
+    static String BaseUrl = 'https://familydriver.lk/';
 }

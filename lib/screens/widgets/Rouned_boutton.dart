@@ -4,9 +4,10 @@ import '../../constant/App_color.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton(
-      {super.key, required this.buttonText, required this.onPress});
+      {super.key, required this.buttonText, required this.onPress,required this.color});
 
   final String buttonText;
+  final Color color;
   final VoidCallback onPress;
 
   @override
@@ -28,7 +29,7 @@ class RoundedButton extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: AppColors.secondaryColor,
+          backgroundColor: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
