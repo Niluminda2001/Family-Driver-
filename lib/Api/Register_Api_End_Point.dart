@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:familydriver/Api/Login_Api_End_Point.dart';
 import 'package:familydriver/constant/App_color.dart';
-import 'package:familydriver/screens/HomePage.dart';
+
 import 'package:familydriver/screens/Login.dart';
 
 import 'package:http/http.dart' as http;
@@ -42,6 +42,7 @@ class RegisterApi {
         Map<String, dynamic> jsonResponse = json.decode(response.body);
 
         // ignore: use_build_context_synchronously
+      } else if (response.statusCode == 201) {
         Navigator.push(
             context,
             MaterialPageRoute(

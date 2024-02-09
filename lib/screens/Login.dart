@@ -1,4 +1,5 @@
 import 'package:familydriver/Api/Login_Api_End_Point.dart';
+import 'package:familydriver/screens/Register_page.dart';
 import 'package:familydriver/screens/widgets/Lable_Text.dart';
 import 'package:familydriver/screens/widgets/Rouned_boutton.dart';
 import 'package:familydriver/screens/widgets/TextComponent.dart';
@@ -74,7 +75,7 @@ class _LoginpageState extends State<Loginpage> {
                               height: 10,
                             ),
                             lableField(
-                              "User Name",
+                              "Email ",
                             ),
                             const SizedBox(
                               height: 10,
@@ -97,7 +98,7 @@ class _LoginpageState extends State<Loginpage> {
                                     fontSize: 14,
                                     color: Color(0xFFBCBCBC),
                                   ),
-                                  hintText: "Your User Name",
+                                  hintText: "Your User Email",
                                   filled: true,
                                   fillColor: AppColors.secondaryColor,
                                   contentPadding: EdgeInsets.all(11.0),
@@ -123,7 +124,7 @@ class _LoginpageState extends State<Loginpage> {
                                 ),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return 'UserName is required';
+                                    return 'Email is required';
                                   }
 
                                   return null;
@@ -144,7 +145,7 @@ class _LoginpageState extends State<Loginpage> {
                               autovalidateMode: switched,
                               child: TextFormField(
                                 controller: passwordContrller,
-                                keyboardType: TextInputType.number,
+                                keyboardType: TextInputType.name,
                                 focusNode: passwordFocusNode,
                                 style: const TextStyle(
                                   fontFamily: 'inter',
@@ -190,38 +191,67 @@ class _LoginpageState extends State<Loginpage> {
 
                                   return null; // Return null if the phone number is valid
                                 },
+                                obscureText: true,
+                                maxLength: 8,
                               ),
                             ),
                             const SizedBox(
                               height: 20,
                             ),
-                            isLoading
-                                ? Center(child: CircularProgressIndicator())
-                                : RoundedButton(
-                                    color: Colors.red,
-                                    buttonText: "Sign in",
-                                    onPress: () async {
-                                      setState(() {
-                                        switched = AutovalidateMode.always;
-                                        isLoading = true;
-                                      });
-                                      try {
-                                        if (emailController.text != "" &&
-                                            passwordContrller.text == "")
-                                          LoginApi.login(emailController.text,
-                                              passwordContrller.text, context);
-                                        // If login is successful, you can navigate to the next screen or perform other actions
-                                      } catch (e) {
-                                        // Handle any errors during the login process
-                                      } finally {
-                                        setState(() {
-                                          isLoading =
-                                              false; // Set isLoading to false when the login process is complete
-                                        });
-                                      }
-                                    }),
+                            Center(
+                              child: isLoading
+                                  ? Center(child: CircularProgressIndicator())
+                                  : SizedBox(
+                                      width: 180,
+                                      height: 50,
+                                      child: RoundedButton(
+                                          color: AppColors.drivercardactive,
+                                          buttonText: "Sign in",
+                                          onPress: () async {
+                                            setState(() {
+                                              switched =
+                                                  AutovalidateMode.always;
+                                              isLoading = true;
+                                            });
+                                            try {
+                                              if (emailController.text != "" &&
+                                                  passwordContrller.text != "")
+                                                LoginApi.login(
+                                                    emailController.text,
+                                                    passwordContrller.text,
+                                                    context);
+                                              // If login is successful, you can navigate to the next screen or perform other actions
+                                            } catch (e) {
+                                              // Handle any errors during the login process
+                                            } finally {
+                                              setState(() {
+                                                isLoading =
+                                                    false; // Set isLoading to false when the login process is complete
+                                              });
+                                            }
+                                          }),
+                                    ),
+                            ),
                             const SizedBox(
                               height: 15,
+                            ),
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SignIn(),
+                                    ));
+                              },
+                              child: Center(
+                                child: TextComponent(
+                                  color: AppColors.primaryColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontsize: 15,
+                                  text: 'Create Account',
+                                ),
+                              ),
                             ),
                             // const Center(
                             //   child: Text(
@@ -282,50 +312,54 @@ class UpperSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 1,
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 15,
-            ),
-            Center(
-              child: TextComponent(
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.w700,
-                fontsize: 18,
-                text: '™',
+      child: Column(
+        children: [
+          Container(
+            color: AppColors
+                .primaryColor, // Change the color to the desired background color
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Center(
+                    child: TextComponent(
+                      color: AppColors.secondaryColor,
+                      fontWeight: FontWeight.w600,
+                      fontsize: 40,
+                      text: 'Loging',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Center(
+                    child: TextComponent(
+                      color: AppColors.drivercardnotactive,
+                      fontWeight: FontWeight.w500,
+                      fontsize: 18,
+                      text: "Every login is a step towards progress",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Image(
+                    image: AssetImage('assets/logo.png'),
+                    height: 150,
+                    width: 150,
+                  ),
+                ],
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            Center(
-              child: TextComponent(
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.w600,
-                fontsize: 24,
-                text: 'Convert MaxTach™\n Connections To Cients',
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Center(
-              child: TextComponent(
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.w500,
-                fontsize: 14,
-                text:
-                    'Master the art of MaxTach™ outreach and\n messaging to grow your business with\n expert guidance',
-              ),
-            ),
-            SizedBox(
-              height: 50,
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

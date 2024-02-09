@@ -2,14 +2,17 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:familydriver/constant/App_color.dart';
 import 'package:familydriver/model/UserModel.dart';
+import 'package:familydriver/screens/Customer/Customer_Home_page.dart';
+import 'package:familydriver/screens/Driver/Driver_Home_page.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
-class GetUserDetail {
+class UserRoleNavigatorEndPoint {
   static List<User> userlist = [];
 
-  static Future<List<User>> getUserDetails(String token) async {
+  static Future<List<User>> roleconvertor(
+      String token, BuildContext context) async {
     final response = await http.get(
       Uri.parse(AppColors.BaseUrl + "api/logged_user"),
       headers: {
@@ -37,6 +40,21 @@ class GetUserDetail {
       );
 
       userlist.add(user);
+      if (data["user"]["role"] == "customer") {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CustomerHomepage(
+                mytoken: token,
+              ),
+            ));
+      } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const DriverHomePage(),
+            ));
+      }
     }
 
     return userlist;

@@ -1,7 +1,7 @@
+import 'package:familydriver/Api/Register_Api_End_Point.dart';
 import 'package:familydriver/constant/App_color.dart';
 import 'package:familydriver/screens/widgets/Rouned_boutton.dart';
 import 'package:flutter/material.dart';
-import 'NavSidebar.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -33,11 +33,6 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: NavBar(),
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: AppColors.primaryColor,
-        ),
         body: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -50,32 +45,35 @@ class _SignInState extends State<SignIn> {
             ),
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(padding: EdgeInsets.all(20)),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    // Image(image: AssetImage('assets/logo.png')),
-                    Text(
-                      'Sign Up',
-                      style: TextStyle(color: Colors.white, fontSize: 40),
-                    ),
-                    SizedBox(height: 7),
-                    Text(
-                      'Your journey begins with a simple sign-up',
-                      style: TextStyle(
-                        color: AppColors.drivercardnotactive,
-                        fontSize: 18,
+              Container(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        'Sign Up',
+                        style: TextStyle(color: Colors.white, fontSize: 40),
                       ),
-                    ),
-                    Image(image: AssetImage('assets/logo.png')),
-                  ],
+                      Text(
+                        'Your journey begins with a simple sign-up',
+                        style: TextStyle(
+                          color: AppColors.drivercardnotactive,
+                          fontSize: 18,
+                        ),
+                      ),
+                      Image(
+                        image: AssetImage('assets/logo.png'),
+                        height: 150,
+                        width: 150,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Expanded(
+                flex: 2,
                 child: SingleChildScrollView(
                   child: Container(
                     decoration: BoxDecoration(
@@ -89,7 +87,6 @@ class _SignInState extends State<SignIn> {
                       padding: EdgeInsets.all(20),
                       child: Column(
                         children: [
-                          SizedBox(height: 60),
                           Container(
                             padding: EdgeInsets.all(20),
                             child: Column(
@@ -332,11 +329,11 @@ class _SignInState extends State<SignIn> {
                                     child: TextFormField(
                                       autovalidateMode: switched,
                                       controller: _customerPasswordController,
-                                      keyboardType: TextInputType.phone,
+                                      keyboardType: TextInputType.name,
                                       style: const TextStyle(
                                         fontFamily: 'inter',
                                         fontSize: 14,
-                                        color: AppColors.secondaryColor,
+                                        color: AppColors.primaryColor,
                                       ),
                                       decoration: InputDecoration(
                                         hintStyle: TextStyle(
@@ -375,8 +372,9 @@ class _SignInState extends State<SignIn> {
                                         }
                                         return null;
                                       },
-                                      obscureText:
-                                          true, // Display input as dots
+                                      obscureText: true,
+                                      maxLength: 8,
+                                      // Display input as dots
                                     ),
                                   ),
                                 ),
@@ -463,7 +461,7 @@ class _SignInState extends State<SignIn> {
                                             style: const TextStyle(
                                               fontFamily: 'inter',
                                               fontSize: 14,
-                                              color: AppColors.secondaryColor,
+                                              color: AppColors.primaryColor,
                                             ),
                                             decoration: InputDecoration(
                                               hintStyle: TextStyle(
@@ -596,50 +594,66 @@ class _SignInState extends State<SignIn> {
                               : SizedBox(
                                   width: 200, // Set the desired width
                                   child: RoundedButton(
-                                    color: AppColors.drivercardactive,
-                                    buttonText: "Sign in",
-                                    onPress: () async {
-                                      setState(() {
-                                        switched = AutovalidateMode.always;
-                                      });
-                                      if (_vehicleTypeController.text.isEmpty ||
-                                          _userRoleController.text.isEmpty ||
-                                          _customerNameController
-                                              .text.isEmpty ||
-                                          _customerEmailController
-                                              .text.isEmpty ||
-                                          _customerPhonenumberController
-                                              .text.isEmpty ||
-                                          _customerPasswordController
-                                              .text.isEmpty ||
-                                          _vehiclenumberController
-                                              .text.isEmpty ||
-                                          _nicController.text.isEmpty) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(SnackBar(
-                                          content:
-                                              Text('Please fill in all fields'),
-                                        ));
-                                        return;
-                                      }
+                                      color: AppColors.drivercardactive,
+                                      buttonText: "Sign in",
+                                      onPress: () async {
+                                        setState(() {
+                                          switched = AutovalidateMode.always;
+                                        });
 
-                                      try {
-                                        setState(() {
-                                          isLoading = true;
-                                        });
-                                        // Perform your login API call here with the provided data
-                                        // Example:
-                                        // await LoginApi.login(_customerEmailController.text, _customerPasswordController.text, context);
-                                        // If login is successful, you can navigate to the next screen or perform other actions
-                                      } catch (e) {
-                                        // Handle any errors during the login process
-                                      } finally {
-                                        setState(() {
-                                          isLoading = false;
-                                        });
-                                      }
-                                    },
-                                  ),
+                                        try {
+                                          if (_customerNameController
+                                                      .text !=
+                                                  "" &&
+                                              _customerEmailController
+                                                      .text !=
+                                                  "" &&
+                                              _customerPhonenumberController
+                                                      .text !=
+                                                  "" &&
+                                              _customerPasswordController
+                                                      .text !=
+                                                  "" &&
+                                              _userRoleController.text !=
+                                                  "") if (_userRoleController.text ==
+                                              "Driver") {
+                                            RegisterApi.register(
+                                                _customerNameController.text,
+                                                _customerEmailController.text,
+                                                _customerPhonenumberController
+                                                    .text,
+                                                _customerPasswordController
+                                                    .text,
+                                                _userRoleController.text,
+                                                "",
+                                                _vehiclenumberController.text,
+                                                _vehicleTypeController.text,
+                                                context);
+                                          } else {
+                                            RegisterApi.register(
+                                                _customerNameController.text,
+                                                _customerEmailController.text,
+                                                _customerPhonenumberController
+                                                    .text,
+                                                _customerPasswordController
+                                                    .text,
+                                                _userRoleController.text,
+                                                "",
+                                                "",
+                                                "",
+                                                context);
+                                          }
+
+                                          // If login is successful, you can navigate to the next screen or perform other actions
+                                        } catch (e) {
+                                          // Handle any errors during the login process
+                                        } finally {
+                                          setState(() {
+                                            isLoading =
+                                                false; // Set isLoading to false when the login process is complete
+                                          });
+                                        }
+                                      }),
                                 ),
 
                           //

@@ -1,14 +1,14 @@
 import 'package:familydriver/constant/App_color.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class DriverHomePage extends StatefulWidget {
+  const DriverHomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DriverHomePage> createState() => _DriverHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DriverHomePageState extends State<DriverHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +85,6 @@ class _HomePageState extends State<HomePage> {
 
             // Search (only saved areas)
             Container(
-              width: 350,
               decoration: BoxDecoration(
                 color: Colors.blueGrey[100],
                 borderRadius: BorderRadius.circular(12),
