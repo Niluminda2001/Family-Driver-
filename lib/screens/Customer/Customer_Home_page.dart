@@ -55,6 +55,7 @@ class _CustomerHomepageState extends State<CustomerHomepage> {
     return Scaffold(
       drawer: NavBar(email: email, name: name, profileimage: profileimage),
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         elevation: 0,
         backgroundColor: AppColors.primaryColor,
       ),
@@ -95,7 +96,7 @@ class _CustomerHomepageState extends State<CustomerHomepage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    height: 20,
+                                    height: 5,
                                   ),
                                   Text(
                                     "Hi " + user.name + " !",
@@ -276,14 +277,69 @@ class _CustomerHomepageState extends State<CustomerHomepage> {
                 child: Container(
                   height: 350,
                   color: Colors.white,
-                  child: Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.black),
-                      )
-                    ],
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 150, // Fixed width for each card
+                          child: Card(
+                            elevation: 4,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.car_crash, size: 50),
+                                SizedBox(height: 10),
+                                Text(
+                                  'Trip',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 5),
+                                Center(
+                                  child: Text(
+                                    'At this moment',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.grey),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 150,
+                          // height: 100,
+                          // Fixed width for each card
+                          child: Card(
+                            elevation: 4,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.punch_clock, size: 50),
+                                SizedBox(height: 10),
+                                Text(
+                                  'Schedule',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: 5),
+                                Center(
+                                  child: Text(
+                                    'Schedule Your \n trip',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.grey),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               )

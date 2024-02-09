@@ -36,7 +36,7 @@ class _NavBarState extends State<NavBar> {
                     child: ClipOval(
                       child: widget.profileimage == ""
                           ? Image.asset(
-                              'assets/propic2.jpg',
+                              'assets/Vector propic.jpg',
                               width: 86, // adjusted to accommodate border
                               height: 86, // adjusted to accommodate border
                               fit: BoxFit.cover,

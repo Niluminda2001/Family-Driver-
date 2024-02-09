@@ -29,7 +29,7 @@ class _DriverHomePageState extends State<DriverHomePage> {
                       height: 20,
                     ),
                     Text(
-                      "Hi Chathuranga !",
+                      "Hi Dulaa!",
                       style: TextStyle(
                           color: AppColors.secondaryColor,
                           fontSize: 24,
@@ -63,153 +63,73 @@ class _DriverHomePageState extends State<DriverHomePage> {
             ),
             Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Where do you want to go now ?',
-                      style: TextStyle(
-                          color: Colors.yellow[600],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    ),
-                    Icon(
-                      Icons.more_horiz,
-                      color: Colors.white,
-                    ),
-                  ],
+                Text(
+                  'Are you ready for the ride ?',
+                  style: TextStyle(
+                      color: Colors.yellow[600],
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 30),
               ],
             ),
-
-            // Search (only saved areas)
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.blueGrey[100],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.search,
-                    color: Colors.black,
-                  ),
-                  SizedBox(width: 20),
-                  Text('Search your saved locations',
-                      style: TextStyle(color: Colors.blueGrey[500]))
-                ],
-              ),
-            ),
-            // Saved locations
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: 300,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey[50],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.home,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Home',
-                        style: TextStyle(color: Colors.grey[700], fontSize: 10),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: 300,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey[50],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.business,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Office',
-                        style: TextStyle(color: Colors.grey[700], fontSize: 10),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: 300,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey[50],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.restaurant,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Restaurant',
-                        style: TextStyle(color: Colors.grey[700], fontSize: 10),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                )
-              ],
-            ),
-
-            // Trip and Scheduling area
-            ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Container(
-                height: 350,
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.black),
-                    )
-                  ],
-                ),
-              ),
-            )
+            // ClipRRect(
+            //   borderRadius: BorderRadius.circular(50),
+            //   child: Container(
+            //     height: 350,
+            //     color: Colors.white,
+            //     child: Padding(
+            //       padding: EdgeInsets.all(20),
+            //       child: Row(
+            //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //         children: <Widget>[
+            //           Card(
+            //             elevation: 4,
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: <Widget>[
+            //                 Icon(Icons.car_crash, size: 50),
+            //                 SizedBox(height: 10),
+            //                 Text(
+            //                   'Trip',
+            //                   style: TextStyle(
+            //                       fontSize: 20, fontWeight: FontWeight.bold),
+            //                 ),
+            //                 SizedBox(height: 5),
+            //                 Text(
+            //                   'At this moment',
+            //                   style:
+            //                       TextStyle(fontSize: 16, color: Colors.grey),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //           Card(
+            //             elevation: 4,
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: <Widget>[
+            //                 Icon(Icons.airplane_ticket, size: 50),
+            //                 SizedBox(height: 10),
+            //                 Text(
+            //                   'Flight',
+            //                   style: TextStyle(
+            //                       fontSize: 20, fontWeight: FontWeight.bold),
+            //                 ),
+            //                 SizedBox(height: 5),
+            //                 Text(
+            //                   'Ready for takeoff',
+            //                   style:
+            //                       TextStyle(fontSize: 16, color: Colors.grey),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),

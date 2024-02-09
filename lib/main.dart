@@ -1,6 +1,9 @@
+import 'package:familydriver/screens/Customer/Customer_Home_page.dart';
 import 'package:familydriver/screens/Driver/Driver_Home_page.dart';
 import 'package:familydriver/screens/Login.dart';
 import 'package:familydriver/screens/Register_page.dart';
+import 'package:familydriver/screens/Tab_bar.dart';
+import 'package:familydriver/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(
@@ -11,6 +14,6 @@ void main() => runApp(
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: DriverHomePage(),
+        home: TripDetails(),
       ),
     );

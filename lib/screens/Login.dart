@@ -34,10 +34,10 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.logingbox,
+      color: AppColors.primaryColor,
       child: SafeArea(
         child: Scaffold(
-          // backgroundColor: AppColors.primaryColor,
+          backgroundColor: AppColors.primaryColor,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +48,7 @@ class _LoginpageState extends State<Loginpage> {
                 child: Container(
                     width: double.infinity,
                     decoration: const BoxDecoration(
-                      color: AppColors.secondaryColor,
+                      color: AppColors.cardcolor,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(24),
                         topRight: Radius.circular(24),
@@ -61,18 +61,20 @@ class _LoginpageState extends State<Loginpage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 30,
+                            SizedBox(
+                              height: 40,
                             ),
-                            TextComponent(
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w700,
-                              fontsize: 24,
-                              text: 'Let’s get started',
+                            Center(
+                              child: TextComponent(
+                                color: AppColors.primaryColor,
+                                fontWeight: FontWeight.w700,
+                                fontsize: 24,
+                                text: 'Let’s get started',
+                              ),
                             ),
 
                             const SizedBox(
-                              height: 10,
+                              height: 20,
                             ),
                             lableField(
                               "Email ",
@@ -287,9 +289,6 @@ class _LoginpageState extends State<Loginpage> {
                             //     ),
                             //   ),
                             // ),
-                            const SizedBox(
-                              height: 10,
-                            )
                           ],
                         ),
                       ),
@@ -313,6 +312,7 @@ class UpperSection extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             color: AppColors
@@ -322,12 +322,6 @@ class UpperSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
                   Center(
                     child: TextComponent(
                       color: AppColors.secondaryColor,
@@ -346,9 +340,6 @@ class UpperSection extends StatelessWidget {
                       fontsize: 18,
                       text: "Every login is a step towards progress",
                     ),
-                  ),
-                  SizedBox(
-                    height: 50,
                   ),
                   Image(
                     image: AssetImage('assets/logo.png'),
